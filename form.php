@@ -65,7 +65,31 @@
 
 
     <script>
-        $(document).ready(function() {});
+        $(document).ready(function() {
+            // 6- Dans la partie js du fichier 'form.php':
+
+            // a) utiliser la fonction on('change') de jquery afin de sélectionner un nom dans la liste déroulante : $('#personne').on('change', function()
+            $('#personne').on('change', function() {
+                // b) récupérer le contenu des deux attributs 'action' et 'method' du formulaire à l'aide de la fonction 'attr' de jquery
+                var action = $('#form').attr('action');
+                var method = $('#form').attr('method');
+
+                // c) Sérialiser le contenu des champs du formulaire (dans cet exemple il y a un seul champ), à l'aide de la fonction serialize() de jQuery
+                var formData = $('#form').serialize();
+
+                // d) utiliser la méthode ajax de jquery pour l'affichage de la réponse
+                $.ajax({
+                    url: action,
+                    type: method,
+                    data: formData,
+                    dataType: 'json', // le format des données attendues
+                    success: function(response) {
+                        // la fonction qui doit s'exécuter lors de la réussite de la communication ajax 
+                        $('#resultat').html(response.contenu);
+                    },
+                });
+            });
+        });
     </script>
 
 </body>

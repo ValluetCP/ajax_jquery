@@ -11,7 +11,8 @@ if(isset($_POST['choix'])){
     $nom = $_POST['choix'];
 
     foreach ($tabs as $value) {
-       if ($tabs == $value['nom']) {
+       // Correction ici : comparer avec $nom au lieu de $tabs
+       if ($nom == $value['nom']) {
             $tab['contenu'] .= '<table style="border-collapse: collapse; width: 100%; margin-top: 35px;" border="1">';
             $tab['contenu'] .= '<tr>';
 
@@ -23,13 +24,12 @@ if(isset($_POST['choix'])){
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['salaire'] . '</td>';
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['idEmploye'] . '</td>';
             $tab['contenu'] .= '</tr>';
-            $tab['contenu'] .= '<table>';
+            $tab['contenu'] .= '</table>';
        }
     }
 
 }
-echo json_decode($tab);
 
-
-//puis reconvertir en JSON pour être compris et lu par JS
+// Correction ici : utiliser json_encode au lieu de json_decode
+echo json_encode($tab);
 ?>
