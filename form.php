@@ -31,19 +31,19 @@
         
             $fichier = file_get_contents('./fichier.json');
             // retourne un tableau JSON (tableau indexé en format JSON)
-            echo "<pre>";
-            var_dump($fichier);
-            echo "</pre>";
+            // echo "<pre>";
+            // var_dump($fichier);
+            // echo "</pre>";
         
         
             // 2/ convertir le tableau json en tableau php (json_decode) et stocker dans une variable : $tab
             $tabs = json_decode($fichier, true);
-            echo "<pre>";
-            var_dump($tabs);
-            echo "</pre>";
+            // echo "<pre>";
+            // var_dump($tabs);
+            // echo "</pre>";
 
         ?>
-
+        <!-- 5- créer une liste déroulante du formulaire html et afficher le contenu de l'indice 'nom' tableau '$tab'dans la liste -->
         <form method="POST" action="ajax.php" id="form">
             <label for="personne">Choisir une personne</label>
             <select name="choix" id="personne">
@@ -57,16 +57,19 @@
             </select>
         </form>
         <hr>
+        <!-- Div vide pour afficher le contenu -->
         <div id="resultat"></div>
 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-
+    
     <script>
+        // 6- Dans la partie js du fichier 'form.php':
+
+        // Dès que la page sera complètement chargée, que le DOM (Document Objet Modèle) sera entièrement généré
         $(document).ready(function() {
-            // 6- Dans la partie js du fichier 'form.php':
 
             // a) utiliser la fonction on('change') de jquery afin de sélectionner un nom dans la liste déroulante : $('#personne').on('change', function()
             $('#personne').on('change', function() {
@@ -79,11 +82,12 @@
 
                 // d) utiliser la méthode ajax de jquery pour l'affichage de la réponse
                 $.ajax({
-                    url: action,
-                    type: method,
-                    data: formData,
+                    url: action, // le fichier cible, celui qui fera le traitement
+                    type: method, // la méthode utilisée 
+                    data: formData, // les paramettre à fournir
                     dataType: 'json', // le format des données attendues
                     success: function(response) {
+
                         // la fonction qui doit s'exécuter lors de la réussite de la communication ajax 
                         $('#resultat').html(response.contenu);
                     },
