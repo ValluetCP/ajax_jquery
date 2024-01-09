@@ -28,8 +28,8 @@ if(isset($_POST['choix'])){
        }
     }
 
+    // Correction ici : utiliser json_encode au lieu de json_decode
+    echo json_encode($tab);
 }
 
-// Correction ici : utiliser json_encode au lieu de json_decode
-echo json_encode($tab);
 ?>
