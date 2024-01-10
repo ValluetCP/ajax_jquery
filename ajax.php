@@ -1,6 +1,5 @@
-
-<!-- 7- Dans le fichier ajax.php (fichier traitement) -->
 <?php
+// 7. Dans le fichier ajax.php (fichier traitement)
 
 // a) créer une variable $tab de type tableau
 $tab = [];
@@ -25,15 +24,16 @@ if(!empty($_POST['choix'])){
 
 
     // e) En utilisant 'foreach' de php parcourir le tableau $tab et : dans le tableau associatif "$tab['contenu']", créer un tableau html et dans chaque 'td' de ce tableau ajouter les contenus de $json
-        exemple :
+        // exemple :
     $nom = $_POST['choix'];
 
     foreach ($tabs as $value) {
        // Correction ici : comparer avec $nom au lieu de $tabs
        if ($nom == $value['nom']) {
-            $tab['contenu'] = '<table style="border-collapse: collapse; width: 100%; margin-top: 35px;" border="1"><tr><td style="padding: 10px;">' . $value['nom'] . '</td>';
-            
+            $tab['contenu'] .= '<table style="border-collapse: collapse; width: 100%; margin-top: 35px;" border="1">';
+            $tab['contenu'] .= '<tr>';
 
+            $tab['contenu'] .= '<td style="padding: 10px;">' . $value['nom'] . '</td>';
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['prenom'] . '</td>';
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['sexe'] . '</td>';
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['service'] . '</td>';

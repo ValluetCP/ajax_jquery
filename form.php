@@ -29,7 +29,7 @@
         <?php
             //  1/ récupérer le contenu du tableau json en utilisant la fonction (file_get_contents) et stocker dans une variable : '$fichier'
         
-            $fichier = file_get_contents('./fichier.json');
+            $fichier = file_get_contents('fichier.json');
             // retourne un tableau JSON (tableau indexé en format JSON)
             // echo "<pre>";
             // var_dump($fichier);
@@ -87,10 +87,14 @@
                     data: formData, // les paramètres à fournir ex : ...id=4&nom=anonyme...(projet : on ne met rien) 
                     dataType: 'json', // le format des données attendues en tableau JSON pour être interprété et éxécuté par AJAX (projet : 'json') 
                     success: function(response) {
-
+                        
                         // la fonction qui doit s'exécuter lors de la réussite de la communication ajax 
                         $('#resultat').html(response.contenu);
                     },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
                 });
             });
         });
