@@ -82,10 +82,10 @@
 
                 // d) utiliser la méthode ajax de jquery pour l'affichage de la réponse
                 $.ajax({
-                    url: action, // le fichier cible, celui qui fera le traitement
-                    type: method, // la méthode utilisée 
-                    data: formData, // les paramettre à fournir
-                    dataType: 'json', // le format des données attendues
+                    url: action, // le fichier cible, celui qui fera le traitement (projet : mettre le chemin que l'on aurait mis dans la balise <a>)
+                    type: method, // la méthode utilisée (projet : ne rien mettre, par défaut on sera sur la method GET)
+                    data: formData, // les paramètres à fournir ex : ...id=4&nom=anonyme...(projet : on ne met rien) 
+                    dataType: 'json', // le format des données attendues en tableau JSON pour être interprété et éxécuté par AJAX (projet : 'json') 
                     success: function(response) {
 
                         // la fonction qui doit s'exécuter lors de la réussite de la communication ajax 

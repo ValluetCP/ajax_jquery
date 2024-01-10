@@ -31,10 +31,9 @@ if(!empty($_POST['choix'])){
     foreach ($tabs as $value) {
        // Correction ici : comparer avec $nom au lieu de $tabs
        if ($nom == $value['nom']) {
-            $tab['contenu'] .= '<table style="border-collapse: collapse; width: 100%; margin-top: 35px;" border="1">';
-            $tab['contenu'] .= '<tr>';
+            $tab['contenu'] = '<table style="border-collapse: collapse; width: 100%; margin-top: 35px;" border="1"><tr><td style="padding: 10px;">' . $value['nom'] . '</td>';
+            
 
-            $tab['contenu'] .= '<td style="padding: 10px;">' . $value['nom'] . '</td>';
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['prenom'] . '</td>';
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['sexe'] . '</td>';
             $tab['contenu'] .= '<td style="padding: 10px;">' . $value['service'] . '</td>';
